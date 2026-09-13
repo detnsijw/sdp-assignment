@@ -37,4 +37,16 @@ public class GamingLaptopBuilder {
     public GamingLaptop build() {
         return new GamingLaptop(processor, graphicsCard, ramSizeGB, storageCapacityGB, hasRGBKeyboard);
     }
+
+    private void validateConfiguration() {
+        if (processor == null || processor.isBlank()) {
+            throw new IllegalStateException("Laptop construction failed: Processor must be specified.");
+        }
+        if (ramSizeGB <= 0) {
+            throw new IllegalStateException("Laptop construction failed: RAM size must be greater than 0.");
+        }
+        if (storageCapacityGB <= 0) {
+            throw new IllegalStateException("Laptop construction failed: storage capacity must be greater than 0.");
+        }
+    }
 }
